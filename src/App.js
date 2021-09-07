@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Layout from "./Layout";
+import useInterval from "./utils/useInterval";
+import "./App.css";
 
 function App() {
+  const now = new Date();
+
+  const [state, setState] = useState({
+    time: {
+      hour: 0,
+      minute: 0,
+      second: 0,
+    },
+    sleepHours: 9,
+    sleepAt: 10,
+    wakeUp: 7,
+  });
+
+  useInterval(() => {
+    setState({
+      ...state,
+      time: {
+        hour: timezone(now.getUTCHours()),
+        minute: timeFormat(now.getUTCMinutes()),
+        second: timeFormat(now.getUTCSeconds()),
+      },
+    });
+  }, [1000]);
+
+  //timezone (+dst)
+  const timezone = (time) => {
+    if (time === 0) return 12;
+    if (time > 12) {
+      return time - 12;
+    }
+  };
+
+  const timeFormat = (num) => {
+    return num < 10 ? `0${num}` : num;
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container py-3 text-center">
+        <div className="h1">Sleep Edit</div>
+      </div>
+      <div>
+        <Layout state={state} setState={setState} />
+      </div>
+    </>
   );
 }
 
