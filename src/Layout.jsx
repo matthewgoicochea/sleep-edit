@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Affirmation from "./Affirmation";
 
 function Layout({ state, setState }) {
   useEffect(() => {}, [state.sleepHours]);
@@ -46,6 +47,10 @@ function Layout({ state, setState }) {
 
   return (
     <div className="container">
+      <div className="py-3 text-center">
+        <div className="h1">Sleep Edit</div>
+      </div>
+      <Affirmation state={state} />
       <div className="row row-cols-1 row-cols-md-2 g-4">
         <div className="col text-center">
           <div className="card">
@@ -60,13 +65,13 @@ function Layout({ state, setState }) {
         </div>
 
         <div className="col text-center">
-          <div className="card bg-dark text-white">
+          <div className="card" id="sleepHrs">
             <div className="card-body">
               <h5 className="card-title">Sleep Hours</h5>
               <p className="card-text">
                 <span>
                   <button
-                    className="btn text-light"
+                    className="btn text-light shadow-none"
                     id="decrease-sleepHours"
                     onClick={buttonHandler}
                   >
@@ -74,7 +79,7 @@ function Layout({ state, setState }) {
                   </button>
                   {state.sleepHours} hrs
                   <button
-                    className="btn text-light"
+                    className="btn text-light shadow-none"
                     id="increase-sleepHours"
                     onClick={buttonHandler}
                   >
@@ -93,7 +98,7 @@ function Layout({ state, setState }) {
               <p className="card-text">
                 <span>
                   <button
-                    className="btn"
+                    className="btn shadow-none"
                     id="decrease-sleepAt"
                     onClick={buttonHandler}
                   >
@@ -101,7 +106,7 @@ function Layout({ state, setState }) {
                   </button>
                   {state.sleepAt} pm
                   <button
-                    className="btn"
+                    className="btn shadow-none"
                     id="increase-sleepAt"
                     onClick={buttonHandler}
                   >
@@ -120,7 +125,7 @@ function Layout({ state, setState }) {
               <p className="card-text">
                 <span>
                   <button
-                    className="btn"
+                    className="btn shadow-none"
                     id="decrease-wakeUp"
                     onClick={buttonHandler}
                   >
@@ -128,7 +133,7 @@ function Layout({ state, setState }) {
                   </button>
                   {state.wakeUp} am
                   <button
-                    className="btn"
+                    className="btn shadow-none"
                     id="increase-wakeUp"
                     onClick={buttonHandler}
                   >

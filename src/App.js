@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "./Layout";
+import ThemeSelector from "./ThemeSelector";
 import useInterval from "./utils/useInterval";
 import "./App.css";
 
@@ -7,6 +8,7 @@ function App() {
   const now = new Date();
 
   const [state, setState] = useState({
+    lightsOn: true,
     time: {
       hour: 0,
       minute: 0,
@@ -39,15 +41,12 @@ function App() {
   const timeFormat = (num) => {
     return num < 10 ? `0${num}` : num;
   };
+
   return (
-    <>
-      <div className="container py-3 text-center">
-        <div className="h1">Sleep Edit</div>
-      </div>
-      <div>
-        <Layout state={state} setState={setState} />
-      </div>
-    </>
+    <div id="app">
+      <ThemeSelector state={state} setState={setState} />
+      <Layout state={state} setState={setState} />
+    </div>
   );
 }
 
