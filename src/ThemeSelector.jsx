@@ -45,7 +45,7 @@ function ThemeSelector({ state, setState }) {
 
   return (
     <nav className="navbar" id="nav">
-      <div className="container-fluid justify-content-end">
+      <div className="container-fluid justify-content-end px-0">
         <button
           className="btn shadow-none"
           id="lightBtn"

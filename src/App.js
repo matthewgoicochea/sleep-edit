@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Layout from "./Layout";
-import ThemeSelector from "./ThemeSelector";
 import useInterval from "./utils/useInterval";
 import "./App.css";
 
@@ -44,7 +43,6 @@ function App() {
 
   return (
     <div id="app">
-      <ThemeSelector state={state} setState={setState} />
       <Layout state={state} setState={setState} />
     </div>
   );

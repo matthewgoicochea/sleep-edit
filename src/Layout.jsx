@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
 import Affirmation from "./Affirmation";
+import SleepAt from "./SleepAt";
+import SleepHours from "./SleepHours";
+import ThemeSelector from "./ThemeSelector";
+import TimeNow from "./TimeNow";
+import WakeUp from "./WakeUp";
 
 function Layout({ state, setState }) {
   useEffect(() => {}, [state.sleepHours]);
@@ -47,103 +52,16 @@ function Layout({ state, setState }) {
 
   return (
     <div className="container">
+      <ThemeSelector state={state} setState={setState} />
       <div className="py-3 text-center">
         <div className="h1">Sleep Edit</div>
       </div>
       <Affirmation state={state} />
       <div className="row row-cols-1 row-cols-md-2 g-4">
-        <div className="col text-center">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title my-0">Time Now</h5>
-              <h6 className="card-subtitle text-muted my-0">EST</h6>
-              <p className="card-text">
-                {state.time.hour}:{state.time.minute}:{state.time.second}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col text-center">
-          <div className="card" id="sleepHrs">
-            <div className="card-body">
-              <h5 className="card-title">Sleep Hours</h5>
-              <p className="card-text">
-                <span>
-                  <button
-                    className="btn text-light shadow-none"
-                    id="decrease-sleepHours"
-                    onClick={buttonHandler}
-                  >
-                    -
-                  </button>
-                  {state.sleepHours} hrs
-                  <button
-                    className="btn text-light shadow-none"
-                    id="increase-sleepHours"
-                    onClick={buttonHandler}
-                  >
-                    +
-                  </button>
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col text-center">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Sleep At</h5>
-              <p className="card-text">
-                <span>
-                  <button
-                    className="btn shadow-none"
-                    id="decrease-sleepAt"
-                    onClick={buttonHandler}
-                  >
-                    -
-                  </button>
-                  {state.sleepAt} pm
-                  <button
-                    className="btn shadow-none"
-                    id="increase-sleepAt"
-                    onClick={buttonHandler}
-                  >
-                    +
-                  </button>
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col text-center">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Wake up</h5>
-              <p className="card-text">
-                <span>
-                  <button
-                    className="btn shadow-none"
-                    id="decrease-wakeUp"
-                    onClick={buttonHandler}
-                  >
-                    -
-                  </button>
-                  {state.wakeUp} am
-                  <button
-                    className="btn shadow-none"
-                    id="increase-wakeUp"
-                    onClick={buttonHandler}
-                  >
-                    +
-                  </button>
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
+        <TimeNow state={state} />
+        <SleepHours state={state} buttonHandler={buttonHandler} />
+        <SleepAt state={state} buttonHandler={buttonHandler} />
+        <WakeUp state={state} buttonHandler={buttonHandler} />
       </div>
     </div>
   );
