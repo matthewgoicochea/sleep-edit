@@ -3,8 +3,7 @@ import React from "react";
 function ThemeSelector({ state, setState }) {
   function toggleLightButton() {
     const body = document.querySelector(".body");
-    const lightBtn = document.querySelector("#lightBtn");
-    const app = document.querySelector("#app");
+    const buttons = document.querySelectorAll(".btn");
     const cards = document.querySelectorAll(".card");
     const sun = document.querySelector("#sun");
     const moon = document.querySelector("#moon");
@@ -14,11 +13,13 @@ function ThemeSelector({ state, setState }) {
     // toggle off
     if (state.lightsOn === true) {
       body.classList.add("bg-dark");
+      body.classList.add("text-light");
       sun.classList.remove("d-none");
       moon.classList.add("d-none");
-      lightBtn.classList.add("text-light");
-      app.classList.add("bg-dark");
-      app.classList.add("text-light");
+
+      buttons.forEach((btn) => {
+        btn.classList.add("text-light");
+      });
 
       cards.forEach((card) => {
         card.classList.add("bg-dark");
@@ -30,11 +31,13 @@ function ThemeSelector({ state, setState }) {
     // toggle on
     if (state.lightsOn === false) {
       body.classList.remove("bg-dark");
+      body.classList.remove("text-light");
       sun.classList.add("d-none");
       moon.classList.remove("d-none");
-      lightBtn.classList.remove("text-light");
-      app.classList.remove("bg-dark");
-      app.classList.remove("text-light");
+
+      buttons.forEach((btn) => {
+        btn.classList.remove("text-light");
+      });
 
       cards.forEach((card) => {
         card.classList.remove("bg-dark");
