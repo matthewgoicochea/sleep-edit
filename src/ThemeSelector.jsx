@@ -51,8 +51,8 @@ function ThemeSelector({ state, setState }) {
           id="lightBtn"
           onClick={toggleLightButton}
         >
-          <i class="bi bi-brightness-high d-none" id="sun"></i>
-          <i class="bi bi-moon" id="moon"></i>
+          <i className="bi bi-brightness-high d-none" id="sun"></i>
+          <i className="bi bi-moon" id="moon"></i>
         </button>
       </div>
     </nav>
