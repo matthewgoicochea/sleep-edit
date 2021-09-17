@@ -2,6 +2,7 @@ import React from "react";
 
 function ThemeSelector({ state, setState }) {
   function toggleLightButton() {
+    const body = document.querySelector(".body");
     const lightBtn = document.querySelector("#lightBtn");
     const app = document.querySelector("#app");
     const cards = document.querySelectorAll(".card");
@@ -12,6 +13,7 @@ function ThemeSelector({ state, setState }) {
 
     // toggle off
     if (state.lightsOn === true) {
+      body.classList.add("bg-dark");
       sun.classList.remove("d-none");
       moon.classList.add("d-none");
       lightBtn.classList.add("text-light");
@@ -27,6 +29,7 @@ function ThemeSelector({ state, setState }) {
 
     // toggle on
     if (state.lightsOn === false) {
+      body.classList.remove("bg-dark");
       sun.classList.add("d-none");
       moon.classList.remove("d-none");
       lightBtn.classList.remove("text-light");
