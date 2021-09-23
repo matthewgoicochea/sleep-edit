@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import Layout from "./Layout";
 import useInterval from "./utils/useInterval";
 import "./App.css";
@@ -43,7 +44,9 @@ function App() {
 
   return (
     <div id="app">
-      <Layout state={state} setState={setState} />
+      <Router>
+        <Layout state={state} setState={setState} />
+      </Router>
     </div>
   );
 }

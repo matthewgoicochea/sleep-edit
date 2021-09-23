@@ -7,6 +7,7 @@ function ThemeSelector({ state, setState }) {
     const cards = document.querySelectorAll(".card");
     const sun = document.querySelector("#sun");
     const moon = document.querySelector("#moon");
+    const navLinks = document.querySelectorAll(".Link");
 
     setState({ ...state, lightsOn: !state.lightsOn });
 
@@ -19,6 +20,10 @@ function ThemeSelector({ state, setState }) {
 
       buttons.forEach((btn) => {
         btn.classList.add("text-light");
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.add("text-light");
       });
 
       cards.forEach((card) => {
@@ -39,6 +44,10 @@ function ThemeSelector({ state, setState }) {
         btn.classList.remove("text-light");
       });
 
+      navLinks.forEach((link) => {
+        link.classList.remove("text-light");
+      });
+
       cards.forEach((card) => {
         card.classList.remove("bg-dark");
         card.classList.remove("text-light");
@@ -47,18 +56,16 @@ function ThemeSelector({ state, setState }) {
   }
 
   return (
-    <nav className="navbar" id="nav">
-      <div className="container-fluid justify-content-end px-0">
-        <button
-          className="btn shadow-none"
-          id="lightBtn"
-          onClick={toggleLightButton}
-        >
-          <i className="bi bi-brightness-high d-none" id="sun"></i>
-          <i className="bi bi-moon" id="moon"></i>
-        </button>
-      </div>
-    </nav>
+    <div className="container-fluid justify-content-end px-0">
+      <button
+        className="btn shadow-none"
+        id="lightBtn"
+        onClick={toggleLightButton}
+      >
+        <i className="bi bi-brightness-high d-none" id="sun"></i>
+        <i className="bi bi-moon" id="moon"></i>
+      </button>
+    </div>
   );
 }
 

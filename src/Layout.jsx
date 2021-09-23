@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import Navbar from "./Navbar";
 import Affirmation from "./Affirmation";
 import SleepAt from "./SleepAt";
 import SleepHours from "./SleepHours";
-import ThemeSelector from "./ThemeSelector";
 import TimeNow from "./TimeNow";
 import WakeUp from "./WakeUp";
 
@@ -52,7 +52,7 @@ function Layout({ state, setState }) {
 
   return (
     <div className="container">
-      <ThemeSelector state={state} setState={setState} />
+      <Navbar state={state} setState={setState} />
       <div className="py-3 text-center">
         <div className="h1">Sleep Edit</div>
       </div>
