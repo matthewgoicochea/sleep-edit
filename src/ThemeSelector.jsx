@@ -51,6 +51,7 @@ function ThemeSelector({ state, setState }) {
       cards.forEach((card) => {
         card.classList.remove("bg-dark");
         card.classList.remove("text-light");
+        card.classList.remove("border-light");
       });
     }
   }

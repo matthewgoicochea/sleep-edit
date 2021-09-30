@@ -23,7 +23,7 @@ function WakeUp({ state, buttonHandler, setState }) {
       decreaseWU.classList.add("disabled");
     }
   };
-  return (
+  return state.lightsOn ? (
     <div className="col text-center">
       <div className="card">
         <div className="card-body">
@@ -48,6 +48,41 @@ function WakeUp({ state, buttonHandler, setState }) {
               {state.wakeUp} am
               <button
                 className="btn shadow-none"
+                id="increase-wakeUp"
+                onClick={buttonHandler}
+              >
+                +
+              </button>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="col text-center">
+      <div className="card bg-dark text-light border-light">
+        <div className="card-body">
+          <span>
+            <h5 className="card-title">Wake up</h5>
+            <i
+              className="bi bi-unlock"
+              id="lockWakeUp"
+              onClick={onLock}
+              locked="false"
+            ></i>
+          </span>
+          <p className="card-text">
+            <span>
+              <button
+                className="btn shadow-none text-light"
+                id="decrease-wakeUp"
+                onClick={buttonHandler}
+              >
+                -
+              </button>
+              {state.wakeUp} am
+              <button
+                className="btn shadow-none text-light"
                 id="increase-wakeUp"
                 onClick={buttonHandler}
               >
