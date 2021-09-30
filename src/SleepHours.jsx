@@ -2,8 +2,13 @@ import React from "react";
 
 function SleepHours({ state, setState }) {
   const onLock = () => {
-    setState({ ...state, sleepHoursLock: !state.sleepHoursLock });
-    const lock = document.querySelector("#lock");
+    setState({
+      ...state,
+      sleepHoursLock: !state.sleepHoursLock,
+      wakeUpLock: false,
+      wakeUp: 7,
+    });
+    const lock = document.querySelector("#lockSleepHrs");
     const increaseSH = document.querySelector("#increase-sleepHours");
     const decreaseSH = document.querySelector("#decrease-sleepHours");
 
@@ -51,7 +56,7 @@ function SleepHours({ state, setState }) {
             <h5 className="card-title">Sleep Hours</h5>
             <i
               className="bi bi-unlock"
-              id="lock"
+              id="lockSleepHrs"
               onClick={onLock}
               locked="false"
             ></i>
