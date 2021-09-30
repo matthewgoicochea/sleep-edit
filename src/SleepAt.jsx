@@ -2,7 +2,7 @@ import React from "react";
 
 function SleepAt({ state, buttonHandler }) {
   return (
-    <div className="col text-center">
+    <div className="col text-center d-none">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Sleep At</h5>

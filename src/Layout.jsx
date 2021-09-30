@@ -13,13 +13,6 @@ function Layout({ state, setState }) {
     console.log("btn:", target.id);
 
     // DECREASE
-    if (target.id === "decrease-sleepHours") {
-      if (state.sleepHours > 5) {
-        if (target.innerHTML === "-") {
-          setState({ ...state, sleepHours: state.sleepHours - 1 });
-        }
-      }
-    }
     if (target.id === "decrease-sleepAt") {
       if (target.innerHTML === "-") {
         setState({ ...state, sleepAt: state.sleepAt - 1 });
@@ -31,13 +24,6 @@ function Layout({ state, setState }) {
       }
     }
     // INCREASE
-    if (target.id === "increase-sleepHours") {
-      if (state.sleepHours < 12) {
-        if (target.innerHTML === "+") {
-          setState({ ...state, sleepHours: state.sleepHours + 1 });
-        }
-      }
-    }
     if (target.id === "increase-sleepAt") {
       if (target.innerHTML === "+") {
         setState({ ...state, sleepAt: state.sleepAt + 1 });
@@ -59,9 +45,11 @@ function Layout({ state, setState }) {
       <Affirmation state={state} />
       <div className="row row-cols-1 row-cols-md-2 g-4">
         <TimeNow state={state} />
-        <SleepHours state={state} buttonHandler={buttonHandler} />
+        <SleepHours state={state} setState={setState} />
         <SleepAt state={state} buttonHandler={buttonHandler} />
-        <WakeUp state={state} buttonHandler={buttonHandler} />
+        {state.sleepHoursLock ? (
+          <WakeUp state={state} buttonHandler={buttonHandler} />
+        ) : null}
       </div>
     </div>
   );

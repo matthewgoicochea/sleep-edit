@@ -17,6 +17,7 @@ function App() {
     sleepHours: 9,
     sleepAt: 10,
     wakeUp: 7,
+    sleepHoursLock: false,
   });
 
   useInterval(() => {

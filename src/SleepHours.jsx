@@ -1,11 +1,61 @@
 import React from "react";
 
-function SleepHours({ state, buttonHandler }) {
+function SleepHours({ state, setState }) {
+  const onLock = () => {
+    setState({ ...state, sleepHoursLock: !state.sleepHoursLock });
+    const lock = document.querySelector("#lock");
+    const increaseSH = document.querySelector("#increase-sleepHours");
+    const decreaseSH = document.querySelector("#decrease-sleepHours");
+
+    if (lock.getAttribute("locked") === "true") {
+      // unlock
+      lock.classList.add("bi-unlock");
+      lock.classList.remove("bi-lock");
+      lock.setAttribute("locked", false);
+      increaseSH.classList.remove("disabled");
+      decreaseSH.classList.remove("disabled");
+    } else {
+      // lock
+      lock.classList.add("bi-lock");
+      lock.classList.remove("bi-unlock");
+      lock.setAttribute("locked", true);
+      increaseSH.classList.add("disabled");
+      decreaseSH.classList.add("disabled");
+    }
+  };
+
+  const buttonHandler = ({ target }) => {
+    if (target.id === "increase-sleepHours") {
+      if (state.sleepHours < 12) {
+        if (target.innerHTML === "+") {
+          setState({
+            ...state,
+            sleepHours: state.sleepHours + 1,
+          });
+        }
+      }
+    }
+    if (target.id === "decrease-sleepHours") {
+      if (state.sleepHours > 5) {
+        if (target.innerHTML === "-") {
+          setState({ ...state, sleepHours: state.sleepHours - 1 });
+        }
+      }
+    }
+  };
   return (
     <div className="col text-center">
       <div className="card" id="sleepHrs">
         <div className="card-body">
-          <h5 className="card-title">Sleep Hours</h5>
+          <span>
+            <h5 className="card-title">Sleep Hours</h5>
+            <i
+              className="bi bi-unlock"
+              id="lock"
+              onClick={onLock}
+              locked="false"
+            ></i>
+          </span>
           <p className="card-text">
             <span>
               <button
