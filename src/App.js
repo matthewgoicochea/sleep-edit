@@ -7,13 +7,9 @@ import "./App.css";
 function App() {
   const now = new Date();
 
+  const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
   const [state, setState] = useState({
     lightsOn: true,
-    time: {
-      hour: 0,
-      minute: 0,
-      second: 0,
-    },
     sleepHours: 9,
     sleepAt: 10,
     wakeUp: 7,
@@ -22,13 +18,11 @@ function App() {
   });
 
   useInterval(() => {
-    setState({
-      ...state,
-      time: {
-        hour: timezone(now.getUTCHours()),
-        minute: timeFormat(now.getUTCMinutes()),
-        second: timeFormat(now.getUTCSeconds()),
-      },
+    setTime({
+      ...time,
+      hour: timezone(now.getUTCHours()),
+      minute: timeFormat(now.getUTCMinutes()),
+      second: timeFormat(now.getUTCSeconds()),
     });
   }, [1000]);
 
@@ -47,7 +41,7 @@ function App() {
   return (
     <div id="app">
       <Router>
-        <Layout state={state} setState={setState} />
+        <Layout state={state} setState={setState} time={time} />
       </Router>
     </div>
   );

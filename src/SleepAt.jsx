@@ -2,12 +2,14 @@ import React from "react";
 
 function SleepAt({ state, setState, buttonHandler }) {
   const getSleepAt = () => {
-    let sleepAt = 0;
+    let sleepAt = state.wakeUp - state.sleepHours;
 
-    setState({ ...state, sleepAt: sleepAt });
+    console.log(sleepAt);
+    //setState({ ...state, sleepAt: sleepAt });
 
     return sleepAt;
   };
+
   return state.lightsOn ? (
     <div className="col text-center">
       <div className="card">

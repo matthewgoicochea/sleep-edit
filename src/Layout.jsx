@@ -6,7 +6,7 @@ import SleepHours from "./SleepHours";
 import TimeNow from "./TimeNow";
 import WakeUp from "./WakeUp";
 
-function Layout({ state, setState }) {
+function Layout({ state, setState, time }) {
   useEffect(() => {}, [state.sleepHours]);
 
   const buttonHandler = ({ target }) => {
@@ -44,7 +44,7 @@ function Layout({ state, setState }) {
       </div>
       <Affirmation state={state} />
       <div className="row row-cols-1 row-cols-md-2 g-4">
-        <TimeNow state={state} />
+        <TimeNow time={time} />
         <SleepHours state={state} setState={setState} />
         {state.sleepHoursLock ? (
           <WakeUp
