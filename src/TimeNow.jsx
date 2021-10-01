@@ -1,6 +1,29 @@
 import React from "react";
+import useInterval from "./utils/useInterval";
 
-function TimeNow({ time }) {
+function TimeNow({ time, setTime }) {
+  const now = new Date();
+
+  useInterval(() => {
+    setTime({
+      ...time,
+      hour: timezone(now.getUTCHours()),
+      minute: timeFormat(now.getUTCMinutes()),
+      second: timeFormat(now.getUTCSeconds()),
+    });
+  }, [1000]);
+
+  //timezone (+dst)
+  const timezone = (time) => {
+    if (time === 0) return 12;
+    if (time > 12) {
+      return time - 12;
+    }
+  };
+
+  const timeFormat = (num) => {
+    return num < 10 ? `0${num}` : num;
+  };
   return (
     <div className="col text-center">
       <div className="card">
