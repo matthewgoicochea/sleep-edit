@@ -46,9 +46,15 @@ function Layout({ state, setState }) {
       <div className="row row-cols-1 row-cols-md-2 g-4">
         <TimeNow state={state} />
         <SleepHours state={state} setState={setState} />
-        <SleepAt state={state} buttonHandler={buttonHandler} />
         {state.sleepHoursLock ? (
           <WakeUp
+            state={state}
+            setState={setState}
+            buttonHandler={buttonHandler}
+          />
+        ) : null}
+        {state.wakeUpLock ? (
+          <SleepAt
             state={state}
             setState={setState}
             buttonHandler={buttonHandler}
