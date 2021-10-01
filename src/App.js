@@ -7,7 +7,7 @@ function App() {
   const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
   const [state, setState] = useState({
     lightsOn: true,
-    sleepHours: 9,
+    sleepHours: 8,
     sleepAt: 10,
     wakeUp: 7,
     sleepHoursLock: false,

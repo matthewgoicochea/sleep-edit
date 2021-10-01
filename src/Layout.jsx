@@ -9,33 +9,6 @@ import WakeUp from "./WakeUp";
 function Layout({ state, setState, time, setTime }) {
   useEffect(() => {}, [state.sleepHours]);
 
-  const buttonHandler = ({ target }) => {
-    console.log("btn:", target.id);
-
-    // DECREASE
-    if (target.id === "decrease-sleepAt") {
-      if (target.innerHTML === "-") {
-        setState({ ...state, sleepAt: state.sleepAt - 1 });
-      }
-    }
-    if (target.id === "decrease-wakeUp") {
-      if (target.innerHTML === "-") {
-        setState({ ...state, wakeUp: state.wakeUp - 1 });
-      }
-    }
-    // INCREASE
-    if (target.id === "increase-sleepAt") {
-      if (target.innerHTML === "+") {
-        setState({ ...state, sleepAt: state.sleepAt + 1 });
-      }
-    }
-    if (target.id === "increase-wakeUp") {
-      if (target.innerHTML === "+") {
-        setState({ ...state, wakeUp: state.wakeUp + 1 });
-      }
-    }
-  };
-
   return (
     <div className="container">
       <Navbar state={state} setState={setState} />
@@ -47,18 +20,10 @@ function Layout({ state, setState, time, setTime }) {
         <TimeNow time={time} setTime={setTime} />
         <SleepHours state={state} setState={setState} />
         {state.sleepHoursLock ? (
-          <WakeUp
-            state={state}
-            setState={setState}
-            buttonHandler={buttonHandler}
-          />
+          <WakeUp state={state} setState={setState} />
         ) : null}
         {state.wakeUpLock ? (
-          <SleepAt
-            state={state}
-            setState={setState}
-            buttonHandler={buttonHandler}
-          />
+          <SleepAt state={state} setState={setState} />
         ) : null}
       </div>
     </div>

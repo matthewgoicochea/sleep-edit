@@ -31,7 +31,7 @@ function SleepHours({ state, setState }) {
 
   const buttonHandler = ({ target }) => {
     if (target.id === "increase-sleepHours") {
-      if (state.sleepHours < 12) {
+      if (state.sleepHours < 9) {
         if (target.innerHTML === "+") {
           setState({
             ...state,
@@ -41,7 +41,7 @@ function SleepHours({ state, setState }) {
       }
     }
     if (target.id === "decrease-sleepHours") {
-      if (state.sleepHours > 5) {
+      if (state.sleepHours > 7) {
         if (target.innerHTML === "-") {
           setState({ ...state, sleepHours: state.sleepHours - 1 });
         }

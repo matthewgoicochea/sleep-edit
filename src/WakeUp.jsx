@@ -1,6 +1,19 @@
 import React from "react";
 
-function WakeUp({ state, buttonHandler, setState }) {
+function WakeUp({ state, setState }) {
+  const buttonHandler = ({ target }) => {
+    if (target.id === "decrease-wakeUp") {
+      if (target.innerHTML === "-") {
+        setState({ ...state, wakeUp: state.wakeUp - 1 });
+      }
+    }
+    if (target.id === "increase-wakeUp") {
+      if (target.innerHTML === "+") {
+        setState({ ...state, wakeUp: state.wakeUp + 1 });
+      }
+    }
+  };
+
   const onLock = () => {
     setState({ ...state, wakeUpLock: !state.wakeUpLock });
     const lock = document.querySelector("#lockWakeUp");

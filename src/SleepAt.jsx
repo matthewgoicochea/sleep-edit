@@ -1,9 +1,25 @@
 import React from "react";
 
-function SleepAt({ state, setState, buttonHandler }) {
+function SleepAt({ state, setState }) {
+  const buttonHandler = ({ target }) => {
+    if (target.id === "decrease-sleepAt") {
+      if (target.innerHTML === "-") {
+        setState({ ...state, sleepAt: state.sleepAt - 1 });
+      }
+    }
+    if (target.id === "increase-sleepAt") {
+      if (target.innerHTML === "+") {
+        setState({ ...state, sleepAt: state.sleepAt + 1 });
+      }
+    }
+  };
+
   const getSleepAt = () => {
     let sleepAt = state.wakeUp - state.sleepHours;
-
+    if (sleepAt <= 0) {
+      sleepAt = 12 + sleepAt;
+    }
+    //if - return 12 - num
     console.log(sleepAt);
     //setState({ ...state, sleepAt: sleepAt });
 
