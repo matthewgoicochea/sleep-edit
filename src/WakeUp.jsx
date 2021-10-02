@@ -3,19 +3,33 @@ import React from "react";
 function WakeUp({ state, setState }) {
   const buttonHandler = ({ target }) => {
     if (target.id === "decrease-wakeUp") {
-      if (target.innerHTML === "-") {
+      if (target.innerHTML === "-" && state.wakeUp > 1) {
         setState({ ...state, wakeUp: state.wakeUp - 1 });
       }
     }
-    if (target.id === "increase-wakeUp") {
+    if (target.id === "increase-wakeUp" && state.wakeUp < 12) {
       if (target.innerHTML === "+") {
         setState({ ...state, wakeUp: state.wakeUp + 1 });
       }
     }
   };
 
+  const getSleepAt = () => {
+    let sleepAt = state.wakeUp - state.sleepHours;
+    if (sleepAt <= 0) {
+      sleepAt = 12 + sleepAt;
+    }
+    setState({ ...state, sleepAt: sleepAt });
+
+    return sleepAt;
+  };
+
   const onLock = () => {
-    setState({ ...state, wakeUpLock: !state.wakeUpLock });
+    setState({
+      ...state,
+      wakeUpLock: !state.wakeUpLock,
+      sleepAt: getSleepAt(),
+    });
     const lock = document.querySelector("#lockWakeUp");
     const increaseWU = document.querySelector("#increase-wakeUp");
     const decreaseWU = document.querySelector("#decrease-wakeUp");
@@ -52,7 +66,9 @@ function WakeUp({ state, setState }) {
           <p className="card-text">
             <span>
               <button
-                className="btn shadow-none"
+                className={`btn shadow-none ${
+                  state.wakeUpLock ? "disabled" : null
+                }`}
                 id="decrease-wakeUp"
                 onClick={buttonHandler}
               >
@@ -60,7 +76,9 @@ function WakeUp({ state, setState }) {
               </button>
               {state.wakeUp} am
               <button
-                className="btn shadow-none"
+                className={`btn shadow-none ${
+                  state.wakeUpLock ? "disabled" : null
+                }`}
                 id="increase-wakeUp"
                 onClick={buttonHandler}
               >
@@ -87,7 +105,9 @@ function WakeUp({ state, setState }) {
           <p className="card-text">
             <span>
               <button
-                className="btn shadow-none text-light"
+                className={`btn shadow-none text-light ${
+                  state.wakeUpLock ? "disabled" : null
+                }`}
                 id="decrease-wakeUp"
                 onClick={buttonHandler}
               >
@@ -95,7 +115,9 @@ function WakeUp({ state, setState }) {
               </button>
               {state.wakeUp} am
               <button
-                className="btn shadow-none text-light"
+                className={`btn shadow-none text-light ${
+                  state.wakeUpLock ? "disabled" : null
+                }`}
                 id="increase-wakeUp"
                 onClick={buttonHandler}
               >

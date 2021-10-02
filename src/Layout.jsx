@@ -7,7 +7,9 @@ import TimeNow from "./TimeNow";
 import WakeUp from "./WakeUp";
 
 function Layout({ state, setState, time, setTime }) {
-  useEffect(() => {}, [state.sleepHours]);
+  useEffect(() => {
+    return null;
+  }, [state.sleepAt]);
 
   return (
     <div className="container">
@@ -15,7 +17,6 @@ function Layout({ state, setState, time, setTime }) {
       <div className="py-3 text-center">
         <div className="h1">Sleep Edit</div>
       </div>
-      <Affirmation state={state} />
       <div className="row row-cols-1 row-cols-md-2 g-4">
         <TimeNow time={time} setTime={setTime} />
         <SleepHours state={state} setState={setState} />
@@ -23,7 +24,10 @@ function Layout({ state, setState, time, setTime }) {
           <WakeUp state={state} setState={setState} />
         ) : null}
         {state.wakeUpLock ? (
-          <SleepAt state={state} setState={setState} />
+          <>
+            <SleepAt state={state} setState={setState} />
+            <Affirmation state={state} />
+          </>
         ) : null}
       </div>
     </div>

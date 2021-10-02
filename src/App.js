@@ -8,7 +8,7 @@ function App() {
   const [state, setState] = useState({
     lightsOn: true,
     sleepHours: 8,
-    sleepAt: 10,
+    sleepAt: null,
     wakeUp: 7,
     sleepHoursLock: false,
     wakeUpLock: false,

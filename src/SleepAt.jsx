@@ -14,18 +14,6 @@ function SleepAt({ state, setState }) {
     }
   };
 
-  const getSleepAt = () => {
-    let sleepAt = state.wakeUp - state.sleepHours;
-    if (sleepAt <= 0) {
-      sleepAt = 12 + sleepAt;
-    }
-    //if - return 12 - num
-    console.log(sleepAt);
-    //setState({ ...state, sleepAt: sleepAt });
-
-    return sleepAt;
-  };
-
   return state.lightsOn ? (
     <div className="col text-center">
       <div className="card">
@@ -42,7 +30,7 @@ function SleepAt({ state, setState }) {
                   -
                 </button>
               )}
-              {getSleepAt()} am/pm
+              {state.sleepAt} am/pm
               {false && (
                 <button
                   className="btn shadow-none"
@@ -73,7 +61,7 @@ function SleepAt({ state, setState }) {
                   -
                 </button>
               )}
-              {getSleepAt()} pm
+              {state.sleepAt} pm
               {false && (
                 <button
                   className="btn shadow-none text-light"
