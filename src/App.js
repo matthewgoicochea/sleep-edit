@@ -12,6 +12,7 @@ function App() {
     wakeUp: 7,
     sleepHoursLock: false,
     wakeUpLock: false,
+    ampm: "am",
   });
 
   return (

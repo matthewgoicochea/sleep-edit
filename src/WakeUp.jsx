@@ -50,6 +50,15 @@ function WakeUp({ state, setState }) {
       decreaseWU.classList.add("disabled");
     }
   };
+
+  const ampm = () => {
+    if (state.ampm === "am") {
+      setState({ ...state, ampm: "pm" });
+    } else {
+      setState({ ...state, ampm: "am" });
+    }
+  };
+
   return state.lightsOn ? (
     <div className="col text-center w-75">
       <div className="card">
@@ -74,7 +83,13 @@ function WakeUp({ state, setState }) {
               >
                 -
               </button>
-              {state.wakeUp} am
+              {state.wakeUp}{" "}
+              <button
+                className="btn shadow-none p-0 align-baseline"
+                onClick={ampm}
+              >
+                {state.ampm}
+              </button>
               <button
                 className={`btn shadow-none ${
                   state.wakeUpLock ? "disabled" : null
