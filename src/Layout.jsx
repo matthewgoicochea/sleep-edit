@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "./Navbar";
 import Affirmation from "./Affirmation";
 import SleepAt from "./SleepAt";
@@ -7,17 +7,13 @@ import TimeNow from "./TimeNow";
 import WakeUp from "./WakeUp";
 
 function Layout({ state, setState, time, setTime }) {
-  useEffect(() => {
-    return null;
-  }, [state.sleepAt]);
-
   return (
-    <div className="container">
+    <div id="app">
       <Navbar state={state} setState={setState} />
       <div className="py-3 text-center">
         <div className="h1">Sleep Edit</div>
       </div>
-      <div className="row row-cols-1 row-cols-md-2 g-4">
+      <div className="row row-cols-1 g-4 justify-content-center">
         <TimeNow time={time} setTime={setTime} />
         <SleepHours state={state} setState={setState} />
         {state.sleepHoursLock ? (

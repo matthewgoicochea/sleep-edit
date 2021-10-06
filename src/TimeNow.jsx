@@ -25,7 +25,7 @@ function TimeNow({ time, setTime }) {
     return num < 10 ? `0${num}` : num;
   };
   return (
-    <div className="col text-center">
+    <div className="col text-center w-75">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title my-0">Time Now</h5>

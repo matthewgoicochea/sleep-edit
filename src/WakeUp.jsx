@@ -51,7 +51,7 @@ function WakeUp({ state, setState }) {
     }
   };
   return state.lightsOn ? (
-    <div className="col text-center">
+    <div className="col text-center w-75">
       <div className="card">
         <div className="card-body">
           <span>
@@ -90,7 +90,7 @@ function WakeUp({ state, setState }) {
       </div>
     </div>
   ) : (
-    <div className="col text-center">
+    <div className="col text-center w-75">
       <div className="card bg-dark text-light border-light">
         <div className="card-body">
           <span>

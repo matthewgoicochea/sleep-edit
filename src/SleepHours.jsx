@@ -49,7 +49,7 @@ function SleepHours({ state, setState }) {
     }
   };
   return (
-    <div className="col text-center">
+    <div className="col text-center w-75">
       <div className="card" id="sleepHrs">
         <div className="card-body">
           <span>

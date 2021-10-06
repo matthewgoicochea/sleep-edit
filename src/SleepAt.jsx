@@ -15,7 +15,7 @@ function SleepAt({ state, setState }) {
   };
 
   return state.lightsOn ? (
-    <div className="col text-center">
+    <div className="col text-center w-75">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Sleep At</h5>
@@ -46,7 +46,7 @@ function SleepAt({ state, setState }) {
       </div>
     </div>
   ) : (
-    <div className="col text-center">
+    <div className="col text-center w-75">
       <div className="card bg-dark text-light border-light">
         <div className="card-body">
           <h5 className="card-title">Sleep At</h5>

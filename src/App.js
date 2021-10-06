@@ -15,16 +15,9 @@ function App() {
   });
 
   return (
-    <div id="app">
-      <Router>
-        <Layout
-          state={state}
-          setState={setState}
-          time={time}
-          setTime={setTime}
-        />
-      </Router>
-    </div>
+    <Router>
+      <Layout state={state} setState={setState} time={time} setTime={setTime} />
+    </Router>
   );
 }
 
